@@ -58,7 +58,8 @@ void initializerandarray(float* A, int m, int n)
     float x = 5.0;
     for (int i = 0; i < m*n; i++)
     {
-        A[i] = (float(rand()) / float((RAND_MAX)) * x);
+        float r3 = -5 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(10)));
+        A[i] = r3;
     }
 }
 
@@ -71,7 +72,6 @@ void rnn_forward_step(float* x, float* h, float* y, float* U, float* V, float* W
     mm_simple(x,U,xt_times_U,10,1,7);
     mm_simple(h,W,prevht_times_W,10,7,7);
     simple_add_tensor(xt_times_U,prevht_times_W,h,10,7);
-    printArray(h,10,7);
     tanh_activation(h,10,7);
     mm_simple(V,h,y,1,10,7);
 }
