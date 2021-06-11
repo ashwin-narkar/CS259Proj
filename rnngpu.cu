@@ -56,23 +56,27 @@ return: none
 __global__ void 
 gpu_matrix_mult(float *a,float *b, float *c, int m, int n, int k)
 { 
-    int row = blockIdx.y * blockDim.y + threadIdx.y; //careful how you define block size
-    int col = blockIdx.x * blockDim.x + threadIdx.x;
-    int sum = 0;
-    if( col < k && row < m) 
-    {
-        for(int i = 0; i < n; i++) 
-        {
-            sum += a[row * n + i] * b[i * k + col];
-        }
-        c[row * k + col] = sum;
+    //Find output row
+    int tid = threadIdx.x + blockIdx.x * blockDim.x;
+    int row = 0; 
+    while(tid >= k){
+        row++;
+        tid -= k;
     }
+    //Find output column
+    tid = threadIdx.x + blockIdx.x * blockDim.x;
+    int col = tid % k;
+    c[tid] = 0;
+    for(int j = 0; j < n; j++){
+        c[tid] += a[n*row + j] * b[col + k*j];
+    }
+
 } 
 
 __global__ void 
 gpu_matrix_add(float *a,float *b, float *c)
 { 
-    int tid = threadIdx.y;
+    int tid = threadIdx.x;
     c[tid] = a[tid] + b[tid];
 } 
 
@@ -107,23 +111,23 @@ int main(void)
     }
     
     // Initialize the host input vectors
-    for (int i = 0; i < xt_size; ++i)
+    for (int i = 0; i < xt_size/sizeof(float); ++i)
     {
         xt_cpu[i] = rand()/(float)RAND_MAX;
     }
-    for (int i = 0; i < ht_size; ++i)
+    for (int i = 0; i < ht_size/sizeof(float); ++i)
     {
         ht_cpu[i] = rand()/(float)RAND_MAX;
     }
-    for (int i = 0; i < W_size; ++i)
+    for (int i = 0; i < W_size/sizeof(float); ++i)
     {
         W_cpu[i] = rand()/(float)RAND_MAX;
     }
-    for (int i = 0; i < V_size; ++i)
+    for (int i = 0; i < V_size/sizeof(float); ++i)
     {
         V_cpu[i] = rand()/(float)RAND_MAX;
     }
-    for (int i = 0; i < U_size; ++i)
+    for (int i = 0; i < U_size/sizeof(float); ++i)
     {
         U_cpu[i] = rand()/(float)RAND_MAX;
     }
@@ -299,14 +303,14 @@ int main(void)
 
     // Launch the Vector RNN_matrix_multiply_step1 CUDA Kernel
     int threadsPerBlock = 64;   //V100 has 64 single-precision CUDA cores per SM
-    int blocksPerGrid =(__OUTLAYER + threadsPerBlock - 1) / threadsPerBlock;
+    int blocksPerGrid =(ht_size/(sizeof(float) * __BATCH) + threadsPerBlock - 1) / threadsPerBlock;
     printf("CUDA kernel launch with %d blocks of %d threads\n", blocksPerGrid, threadsPerBlock);
 
     
     struct timeval t1, t2;
     gettimeofday(&t1,0);
     
-    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(xt_cuda, U_cuda, xt_times_U_cuda,__INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
+    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(xt_cuda, U_cuda, xt_times_U_cuda, __XT_ROW, __XT_COL, __U_COL);   
     cudaThreadSynchronize();
     err = cudaGetLastError();
     if (err != cudaSuccess)
@@ -315,7 +319,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(ht_cuda, W_cuda, prevht_times_W_cuda, __INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
+    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(ht_cuda, W_cuda, prevht_times_W_cuda, __HT_ROW, __HT_COL, __W_COL);   
     cudaThreadSynchronize();
     err = cudaGetLastError();
     if (err != cudaSuccess)
@@ -352,13 +356,17 @@ int main(void)
 
 
     // TODO: Calculate the verified multiplication on the host? Idk if this is necessary
+    printf("Outputs: ");
+    for(int i = 0; i < ht_size/sizeof(float); i++)
+        printf("%.4f, ", ht_cpu[i]);
+    printf("\n");
 
     printf("Multiplication PASSED\n");
     
 
     // Free device global memory
     err = cudaFree(xt_cuda);
-
+    
     if (err != cudaSuccess)
     {
         fprintf(stderr, "Failed to free device vector xt_cuda (error code %s)!\n", cudaGetErrorString(err));
@@ -404,7 +412,7 @@ int main(void)
         fprintf(stderr, "Failed to free device vector V_cuda (error code %s)!\n", cudaGetErrorString(err));
         exit(EXIT_FAILURE);
     }
-
+    
     err = cudaFree(xt_times_U_cuda);
 
     if (err != cudaSuccess)
@@ -420,7 +428,7 @@ int main(void)
         fprintf(stderr, "Failed to free device vector prevht_times_W_cuda (error code %s)!\n", cudaGetErrorString(err));
         exit(EXIT_FAILURE);
     }
-    
+
     // Free host memory
     free(xt_cpu);
     free(ht_cpu);
@@ -428,8 +436,7 @@ int main(void)
     free(W_cpu);
     free(V_cpu);
     free(U_cpu);
-    
-    printf("Done\n");
+
     return 0;
 }
 
