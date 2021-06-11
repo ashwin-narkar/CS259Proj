@@ -15,23 +15,46 @@
     #define __OUTLAYER 1024
 #endif
 
+//From open source code: git user lzhengchun
+/*
+*********************************************************************
+function name: gpu_matrix_mult
+description: dot product of two matrix (not only square)
+parameters: 
+            &a GPU device pointer to a m X n matrix (A)
+            &b GPU device pointer to a n X k matrix (B)
+            &c GPU device output purpose pointer to a m X k matrix (C) 
+            to store the result
+Note:
+    grid and block should be configured as:
+        dim3 dimGrid((k + BLOCK_SIZE - 1) / BLOCK_SIZE, (m + BLOCK_SIZE - 1) / BLOCK_SIZE);
+        dim3 dimBlock(BLOCK_SIZE, BLOCK_SIZE);
+    further sppedup can be obtained by using shared memory to decrease global memory access times
+return: none
+*********************************************************************
+*/
+__global__ void 
+gpu_matrix_mult(float *a,float *b, float *c, int m, int n, int k)
+{ 
+    int row = blockIdx.y * blockDim.y + threadIdx.y; //careful how you define block size
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+    int sum = 0;
+    if( col < k && row < m) 
+    {
+        for(int i = 0; i < n; i++) 
+        {
+            sum += a[row * n + i] * b[i * k + col];
+        }
+        c[row * k + col] = sum;
+    }
+} 
 
 __global__ void 
-mv_multiply( float* C, float* A, float* B, int n, int m)
-{
-    int gindex = threadIdx.x + blockIdx.x*blockDim.x;
-
-    C[gindex] = 0.0f;
-
-    for (int b = 0; b < __BATCH; b++)
-    {
-        for (int k = 0; k < n; k++){
-            C[gindex+b*m] += A[k+n*b] * B[gindex*n + k];
-        }
-    }
-
-    
-}
+gpu_matrix_add(float *a,float *b, float *c)
+{ 
+    int tid = threadIdx.y;
+    c[tid] = a[tid] + b[tid];
+} 
 
 int main(void)
 {
@@ -46,13 +69,13 @@ int main(void)
     size_t U_size = __OUTLAYER * __BATCH * sizeof(float);
 
     // Allocate the host input vector xt
-    float *xt_cpu = (float *)malloc(inputSize);
+    float *xt_cpu = (float *)malloc(xt_size);
 
     // Allocate the host input vector ht
-    float *ht_cpu = (float *)malloc(matrixSize);
+    float *ht_cpu = (float *)malloc(ht_size);
 
     // Allocate the host output vector yt
-    float *yt_cpu = (float *)malloc(outSize);
+    float *yt_cpu = (float *)malloc(yt_size);
 
     float *W_cpu = (float *)malloc(W_size);
 
@@ -129,6 +152,16 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
+    // Allocate the device input vector W
+    float *W_cuda = NULL;
+    err = cudaMalloc((void **)&W_cuda, W_size);
+
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to allocate device vector W (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
     // Allocate the device input vector U
     float *U_cuda = NULL;
     err = cudaMalloc((void **)&U_cuda, U_size);
@@ -173,8 +206,7 @@ int main(void)
 
 
 
-    // Copy the host input vector xt in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector xt in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(xt_cuda, xt_cpu, xt_size, cudaMemcpyHostToDevice);
 
@@ -184,8 +216,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    // Copy the host input vector ht in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector ht in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(ht_cuda, ht_cpu, ht_size, cudaMemcpyHostToDevice);
 
@@ -195,8 +226,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    // Copy the host input vector yt in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector yt in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(yt_cuda, yt_cpu, yt_size, cudaMemcpyHostToDevice);
 
@@ -206,8 +236,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    // Copy the host input vector W in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector W in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(W_cuda, W_cpu, W_size, cudaMemcpyHostToDevice);
 
@@ -217,8 +246,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    // Copy the host input vector V in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector V in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(V_cuda, V_cpu, V_size, cudaMemcpyHostToDevice);
 
@@ -229,8 +257,7 @@ int main(void)
     }
 
 
-    // Copy the host input vector U in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector U in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(U_cuda, U_cpu, U_size, cudaMemcpyHostToDevice);
 
@@ -240,8 +267,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
     
-    // Copy the host input vector xt_times_U in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector xt_times_U in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(xt_times_U_cuda, xt_times_U_cpu, ht_size, cudaMemcpyHostToDevice);
 
@@ -252,8 +278,7 @@ int main(void)
     }
 
 
-    // Copy the host input vector prevht_times_W in host memory to the device input vector in
-    // device memory
+    // Copy the host input vector prevht_times_W in host memory to the device input vector in device memory
     printf("Copy input data from the host memory to the CUDA device\n");
     err = cudaMemcpy(prevht_times_W_cuda, prevht_times_W_cpu, ht_size, cudaMemcpyHostToDevice);
 
@@ -271,12 +296,36 @@ int main(void)
     int blocksPerGrid =(__OUTLAYER + threadsPerBlock - 1) / threadsPerBlock;
     printf("CUDA kernel launch with %d blocks of %d threads\n", blocksPerGrid, threadsPerBlock);
 
-
+    
     struct timeval t1, t2;
     gettimeofday(&t1,0);
-    mv_multiply<<<blocksPerGrid, threadsPerBlock>>>(d_C, d_A, d_B, __INPUTLAYER, __OUTLAYER);   
+    
+    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(xt_times_U_cuda, xt_cuda, U_cuda, __INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
     cudaThreadSynchronize();
     err = cudaGetLastError();
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to launch vectorAdd kernel (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
+    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(prevht_times_W_cuda, ht_cuda, W_cuda, __INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
+    cudaThreadSynchronize();
+    err = cudaGetLastError();
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to launch vectorAdd kernel (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
+    gpu_matrix_add<<<blocksPerGrid, threadsPerBlock>>>(ht_cuda, xt_times_U_cuda, prevht_times_W_cuda);   
+    cudaThreadSynchronize();
+    err = cudaGetLastError();
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to launch vectorAdd kernel (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
 
     gettimeofday(&t2, 0);
 
@@ -284,16 +333,10 @@ int main(void)
 
     printf("Time to generate:  %3.1f ms \n", time);
 
-    if (err != cudaSuccess)
-    {
-        fprintf(stderr, "Failed to launch vectorAdd kernel (error code %s)!\n", cudaGetErrorString(err));
-        exit(EXIT_FAILURE);
-    }
-
     // Copy the device result vector in device memory to the host result vector
     // in host memory.
     printf("Copy output data from the CUDA device to the host memory\n");
-    err = cudaMemcpy(h_C, d_C, outSize, cudaMemcpyDeviceToHost);
+    err = cudaMemcpy(ht_cpu, ht_cuda, ht_size, cudaMemcpyDeviceToHost);
 
     if (err != cudaSuccess)
     {
@@ -305,37 +348,81 @@ int main(void)
     // TODO: Calculate the verified multiplication on the host? Idk if this is necessary
 
     printf("Multiplication PASSED\n");
+    
 
     // Free device global memory
-    err = cudaFree(d_A);
+    err = cudaFree(xt_cuda);
 
     if (err != cudaSuccess)
     {
-        fprintf(stderr, "Failed to free device vector A (error code %s)!\n", cudaGetErrorString(err));
+        fprintf(stderr, "Failed to free device vector xt_cuda (error code %s)!\n", cudaGetErrorString(err));
         exit(EXIT_FAILURE);
     }
 
-    err = cudaFree(d_B);
+    err = cudaFree(U_cuda);
 
     if (err != cudaSuccess)
     {
-        fprintf(stderr, "Failed to free device vector B (error code %s)!\n", cudaGetErrorString(err));
+        fprintf(stderr, "Failed to free device vector U_cuda (error code %s)!\n", cudaGetErrorString(err));
         exit(EXIT_FAILURE);
     }
 
-    err = cudaFree(d_C);
+    err = cudaFree(ht_cuda);
 
     if (err != cudaSuccess)
     {
-        fprintf(stderr, "Failed to free device vector C (error code %s)!\n", cudaGetErrorString(err));
+        fprintf(stderr, "Failed to free device vector ht_cuda (error code %s)!\n", cudaGetErrorString(err));
         exit(EXIT_FAILURE);
     }
 
+    err = cudaFree(W_cuda);
+
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to free device vector W_cuda (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
+    err = cudaFree(yt_cuda);
+
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to free device vector yt_cuda (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
+    err = cudaFree(V_cuda);
+
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to free device vector V_cuda (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
+    err = cudaFree(xt_times_U_cuda);
+
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to free device vector xt_time_U_cuda (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
+    err = cudaFree(prevht_times_W_cuda);
+
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to free device vector prevht_times_W_cuda (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+    
     // Free host memory
-    free(h_A);
-    free(h_B);
-    free(h_C);
-
+    free(xt_cpu);
+    free(ht_cpu);
+    free(yt_cpu);
+    free(W_cpu);
+    free(V_cpu);
+    free(U_cpu);
+    
     printf("Done\n");
     return 0;
 }
