@@ -71,8 +71,8 @@ void rnn_forward_step(float* x, float* h, float* y, float* U, float* V, float* W
     float prevht_times_W[70];
     mm_simple(x,U,xt_times_U,10,1,7);
     mm_simple(h,W,prevht_times_W,10,7,7);
-    simple_add_tensor(xt_times_U,prevht_times_W,h,10,7);
-    tanh_activation(h,10,7);
+    simple_add_tensor(xt_times_U,prevht_times_W,h,10,7);    //elementwise addition
+    tanh_activation(h,10,7);    //elementwise tanh
     mm_simple(V,h,y,1,10,7);
 }
 
@@ -81,7 +81,7 @@ int main()
     srand((unsigned int)time(NULL));
     /*
         Hard coded dimensions
-            xt = 1x10
+            xt = 10x1
             ht = 10x7
             yt = 1x7
             U = 1x7

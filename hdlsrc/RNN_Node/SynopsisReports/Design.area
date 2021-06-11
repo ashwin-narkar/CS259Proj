@@ -1,0 +1,157 @@
+ 
+****************************************
+Report : area
+Design : RNN
+Version: G-2012.06-SP1
+Date   : Thu Jun 10 20:25:18 2021
+****************************************
+
+Library(s) Used:
+
+    saed32rvt_ff1p16vn40c (File: /w/apps2/public.2/tech/synopsys/32-28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ff1p16vn40c.db)
+
+Number of ports:                          224
+Number of nets:                        347159
+Number of cells:                       261071
+Number of combinational cells:         167626
+Number of sequential cells:             93330
+Number of macros:                           0
+Number of buf/inv:                      32373
+Number of references:                     164
+
+Combinational area:       448043.165675
+Buf/Inv area:             54603.348208
+Noncombinational area:    622453.062005
+Net Interconnect area:    1024682.012754
+
+Total cell area:          1070496.227680
+Total area:               2095178.240434
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area               Local cell area
+                                  ---------------------  -------------------------------- 
+Hierarchical cell                 Absolute      Percent  Combi-       Noncombi-    Black
+                                  Total         Total    national     national     boxes   Design
+--------------------------------  ------------  -------  -----------  -----------  ------  -----------------
+RNN                               1070496.2277    100.0  404694.3323  622453.0620  0.0000  RNN
+PU1/u_nfp_add_comp/add_1060           121.7350      0.0     121.7350       0.0000  0.0000  RNN_DW01_add_1
+PU1/u_nfp_add_comp/add_2309            73.9559      0.0      73.9559       0.0000  0.0000  RNN_DW01_inc_5
+PU1/u_nfp_add_comp/add_2398            25.4144      0.0      25.4144       0.0000  0.0000  RNN_DW01_inc_4
+PU1/u_nfp_add_comp/add_2444            25.4144      0.0      25.4144       0.0000  0.0000  RNN_DW01_inc_3
+PU1/u_nfp_add_comp/gte_537            168.4975      0.0     168.4975       0.0000  0.0000  RNN_DW_cmp_3
+PU1/u_nfp_add_comp/sla_1702           414.7630      0.0     414.7630       0.0000  0.0000  RNN_DW_leftsh_1
+PU1/u_nfp_add_comp/sra_1040           468.6416      0.0     468.6416       0.0000  0.0000  RNN_DW_rightsh_1
+PU1/u_nfp_add_comp/sub_1000            49.8122      0.0      49.8122       0.0000  0.0000  RNN_DW01_sub_4
+PU1/u_nfp_add_comp/sub_951            151.7240      0.0     151.7240       0.0000  0.0000  RNN_DW01_sub_5
+PU1/u_nfp_add_comp_1/add_1060         121.7350      0.0     121.7350       0.0000  0.0000  RNN_DW01_add_0
+PU1/u_nfp_add_comp_1/add_2309          73.9559      0.0      73.9559       0.0000  0.0000  RNN_DW01_inc_2
+PU1/u_nfp_add_comp_1/add_2398          25.4144      0.0      25.4144       0.0000  0.0000  RNN_DW01_inc_1
+PU1/u_nfp_add_comp_1/add_2444          25.4144      0.0      25.4144       0.0000  0.0000  RNN_DW01_inc_0
+PU1/u_nfp_add_comp_1/gte_537          168.4975      0.0     168.4975       0.0000  0.0000  RNN_DW_cmp_1
+PU1/u_nfp_add_comp_1/sla_1702         414.7630      0.0     414.7630       0.0000  0.0000  RNN_DW_leftsh_0
+PU1/u_nfp_add_comp_1/sra_1040         468.6416      0.0     468.6416       0.0000  0.0000  RNN_DW_rightsh_0
+PU1/u_nfp_add_comp_1/sub_1000          49.8122      0.0      49.8122       0.0000  0.0000  RNN_DW01_sub_1
+PU1/u_nfp_add_comp_1/sub_951          151.7240      0.0     151.7240       0.0000  0.0000  RNN_DW01_sub_2
+PU1/u_nfp_mul_comp/add_1077            73.9559      0.0      73.9559       0.0000  0.0000  RNN_DW01_inc_11
+PU1/u_nfp_mul_comp/add_751             40.1548      0.0      40.1548       0.0000  0.0000  RNN_DW01_add_83
+PU1/u_nfp_mul_comp/mult_598          5383.0240      0.5    5383.0240       0.0000  0.0000  RNN_DW_mult_uns_2
+PU1/u_nfp_mul_comp/sub_823             56.6741      0.0      56.6741       0.0000  0.0000  RNN_DW01_sub_26
+PU1/u_nfp_mul_comp_1/add_1077          73.9559      0.0      73.9559       0.0000  0.0000  RNN_DW01_inc_10
+PU1/u_nfp_mul_comp_1/add_751           40.1548      0.0      40.1548       0.0000  0.0000  RNN_DW01_add_78
+PU1/u_nfp_mul_comp_1/mult_598        5378.9577      0.5    5378.9577       0.0000  0.0000  RNN_DW_mult_uns_1
+PU1/u_nfp_mul_comp_1/sub_823           56.6741      0.0      56.6741       0.0000  0.0000  RNN_DW01_sub_25
+PU1/u_nfp_tanh_comp/add_1803           24.3978      0.0      24.3978       0.0000  0.0000  RNN_DW01_inc_9
+PU1/u_nfp_tanh_comp/add_2044_aco      176.6301      0.0     176.6301       0.0000  0.0000  RNN_DW01_add_72
+PU1/u_nfp_tanh_comp/add_2096_aco      167.7350      0.0     167.7350       0.0000  0.0000  RNN_DW01_add_71
+PU1/u_nfp_tanh_comp/add_2148_aco      161.8897      0.0     161.8897       0.0000  0.0000  RNN_DW01_add_70
+PU1/u_nfp_tanh_comp/add_2200_aco      176.1218      0.0     176.1218       0.0000  0.0000  RNN_DW01_add_69
+PU1/u_nfp_tanh_comp/add_2252_aco      180.4422      0.0     180.4422       0.0000  0.0000  RNN_DW01_add_68
+PU1/u_nfp_tanh_comp/add_2304_aco      167.4809      0.0     167.4809       0.0000  0.0000  RNN_DW01_add_67
+PU1/u_nfp_tanh_comp/add_2356_aco      150.7074      0.0     150.7074       0.0000  0.0000  RNN_DW01_add_66
+PU1/u_nfp_tanh_comp/add_2408_aco      166.7185      0.0     166.7185       0.0000  0.0000  RNN_DW01_add_65
+PU1/u_nfp_tanh_comp/add_2460_aco      180.4422      0.0     180.4422       0.0000  0.0000  RNN_DW01_add_64
+PU1/u_nfp_tanh_comp/add_2512_aco      174.5969      0.0     174.5969       0.0000  0.0000  RNN_DW01_add_63
+PU1/u_nfp_tanh_comp/add_2564_aco      168.2433      0.0     168.2433       0.0000  0.0000  RNN_DW01_add_62
+PU1/u_nfp_tanh_comp/add_2616_aco      171.5472      0.0     171.5472       0.0000  0.0000  RNN_DW01_add_61
+PU1/u_nfp_tanh_comp/add_2668          148.1659      0.0     148.1659       0.0000  0.0000  RNN_DW01_add_60
+PU1/u_nfp_tanh_comp/add_2942           95.0499      0.0      95.0499       0.0000  0.0000  RNN_DW01_add_55
+PU1/u_nfp_tanh_comp/add_2990          125.5471      0.0     125.5471       0.0000  0.0000  RNN_DW01_add_54
+PU1/u_nfp_tanh_comp/add_3038          160.8731      0.0     160.8731       0.0000  0.0000  RNN_DW01_add_53
+PU1/u_nfp_tanh_comp/add_3074          186.5417      0.0     186.5417       0.0000  0.0000  RNN_DW01_add_52
+PU1/u_nfp_tanh_comp/add_3110          188.0666      0.0     188.0666       0.0000  0.0000  RNN_DW01_add_51
+PU1/u_nfp_tanh_comp/add_3146          189.5914      0.0     189.5914       0.0000  0.0000  RNN_DW01_add_50
+PU1/u_nfp_tanh_comp/add_3182          191.1163      0.0     191.1163       0.0000  0.0000  RNN_DW01_add_49
+PU1/u_nfp_tanh_comp/add_3218          192.6411      0.0     192.6411       0.0000  0.0000  RNN_DW01_add_48
+PU1/u_nfp_tanh_comp/add_3254          194.1660      0.0     194.1660       0.0000  0.0000  RNN_DW01_add_47
+PU1/u_nfp_tanh_comp/add_3427_aco      114.1107      0.0     114.1107       0.0000  0.0000  RNN_DW01_add_46
+PU1/u_nfp_tanh_comp/add_3593          185.2710      0.0     185.2710       0.0000  0.0000  RNN_DW01_add_45
+PU1/u_nfp_tanh_comp/add_3707           40.1548      0.0      40.1548       0.0000  0.0000  RNN_DW01_add_44
+PU1/u_nfp_tanh_comp/add_3822          127.5803      0.0     127.5803       0.0000  0.0000  RNN_DW01_add_43
+PU1/u_nfp_tanh_comp/add_4050          182.4754      0.0     182.4754       0.0000  0.0000  RNN_DW01_add_41
+PU1/u_nfp_tanh_comp/add_4062          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_40
+PU1/u_nfp_tanh_comp/add_4103          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_39
+PU1/u_nfp_tanh_comp/add_4115          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_38
+PU1/u_nfp_tanh_comp/add_4135          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_37
+PU1/u_nfp_tanh_comp/add_4153          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_36
+PU1/u_nfp_tanh_comp/add_4242          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_35
+PU1/u_nfp_tanh_comp/add_4254          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_34
+PU1/u_nfp_tanh_comp/add_4284          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_33
+PU1/u_nfp_tanh_comp/add_4373          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_32
+PU1/u_nfp_tanh_comp/add_4385          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_31
+PU1/u_nfp_tanh_comp/add_4415          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_30
+PU1/u_nfp_tanh_comp/add_4504          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_29
+PU1/u_nfp_tanh_comp/add_4516          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_28
+PU1/u_nfp_tanh_comp/add_4546          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_27
+PU1/u_nfp_tanh_comp/add_4635          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_26
+PU1/u_nfp_tanh_comp/add_4647          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_25
+PU1/u_nfp_tanh_comp/add_4677          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_24
+PU1/u_nfp_tanh_comp/add_4766          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_23
+PU1/u_nfp_tanh_comp/add_4778          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_22
+PU1/u_nfp_tanh_comp/add_4808          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_21
+PU1/u_nfp_tanh_comp/add_4897          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_20
+PU1/u_nfp_tanh_comp/add_4909          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_19
+PU1/u_nfp_tanh_comp/add_4939          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_18
+PU1/u_nfp_tanh_comp/add_5028          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_17
+PU1/u_nfp_tanh_comp/add_5040          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_16
+PU1/u_nfp_tanh_comp/add_5070          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_15
+PU1/u_nfp_tanh_comp/add_5159          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_14
+PU1/u_nfp_tanh_comp/add_5171          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_13
+PU1/u_nfp_tanh_comp/add_5201          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_12
+PU1/u_nfp_tanh_comp/add_5290          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_11
+PU1/u_nfp_tanh_comp/add_5302          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_10
+PU1/u_nfp_tanh_comp/add_5332          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_9
+PU1/u_nfp_tanh_comp/add_5421          175.3594      0.0     175.3594       0.0000  0.0000  RNN_DW01_add_8
+PU1/u_nfp_tanh_comp/add_5433          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_7
+PU1/u_nfp_tanh_comp/add_5463          170.5306      0.0     170.5306       0.0000  0.0000  RNN_DW01_add_6
+PU1/u_nfp_tanh_comp/add_5552          171.0389      0.0     171.0389       0.0000  0.0000  RNN_DW01_add_5
+PU1/u_nfp_tanh_comp/add_5564          166.2102      0.0     166.2102       0.0000  0.0000  RNN_DW01_add_4
+PU1/u_nfp_tanh_comp/add_5648          166.2102      0.0     166.2102       0.0000  0.0000  RNN_DW01_add_3
+PU1/u_nfp_tanh_comp/add_5897          141.0499      0.0     141.0499       0.0000  0.0000  RNN_DW01_add_2
+PU1/u_nfp_tanh_comp/add_6036           25.4144      0.0      25.4144       0.0000  0.0000  RNN_DW01_inc_7
+PU1/u_nfp_tanh_comp/add_6145           25.4144      0.0      25.4144       0.0000  0.0000  RNN_DW01_inc_6
+PU1/u_nfp_tanh_comp/mult_1734        7596.1100      0.7    7596.1100       0.0000  0.0000  RNN_DW_mult_uns_0
+PU1/u_nfp_tanh_comp/mult_3498        2847.4293      0.3    2847.4293       0.0000  0.0000  RNN_DW_mult_tc_0
+PU1/u_nfp_tanh_comp/mult_3523        2896.4791      0.3    2896.4791       0.0000  0.0000  RNN_DW_mult_tc_1
+PU1/u_nfp_tanh_comp/sla_1930          734.4762      0.1     734.4762       0.0000  0.0000  RNN_DW_leftsh_3
+PU1/u_nfp_tanh_comp/sra_1962          611.2163      0.1     611.2163       0.0000  0.0000  RNN_DW_rightsh_3
+PU1/u_nfp_tanh_comp/sra_3804          866.3769      0.1     866.3769       0.0000  0.0000  RNN_DW_rightsh_2
+PU1/u_nfp_tanh_comp/sub_1997          211.7020      0.0     211.7020       0.0000  0.0000  RNN_DW01_sub_23
+PU1/u_nfp_tanh_comp/sub_2890          103.6908      0.0     103.6908       0.0000  0.0000  RNN_DW01_sub_19
+PU1/u_nfp_tanh_comp/sub_2938          140.5416      0.0     140.5416       0.0000  0.0000  RNN_DW01_sub_18
+PU1/u_nfp_tanh_comp/sub_2986          183.4920      0.0     183.4920       0.0000  0.0000  RNN_DW01_sub_17
+PU1/u_nfp_tanh_comp/sub_3034          212.7185      0.0     212.7185       0.0000  0.0000  RNN_DW01_sub_16
+PU1/u_nfp_tanh_comp/sub_3070          223.3926      0.0     223.3926       0.0000  0.0000  RNN_DW01_sub_15
+PU1/u_nfp_tanh_comp/sub_3106          222.6301      0.0     222.6301       0.0000  0.0000  RNN_DW01_sub_14
+PU1/u_nfp_tanh_comp/sub_3142          223.6467      0.0     223.6467       0.0000  0.0000  RNN_DW01_sub_13
+PU1/u_nfp_tanh_comp/sub_3178          224.1550      0.0     224.1550       0.0000  0.0000  RNN_DW01_sub_12
+PU1/u_nfp_tanh_comp/sub_3214          224.4091      0.0     224.4091       0.0000  0.0000  RNN_DW01_sub_11
+PU1/u_nfp_tanh_comp/sub_3250          224.6633      0.0     224.6633       0.0000  0.0000  RNN_DW01_sub_10
+PU1/u_nfp_tanh_comp/sub_3393          228.4755      0.0     228.4755       0.0000  0.0000  RNN_DW01_sub_9
+r1311                                 135.7129      0.0     135.7129       0.0000  0.0000  RNN_DW01_cmp6_0
+r1312                                  28.7183      0.0      28.7183       0.0000  0.0000  RNN_DW01_inc_12
+--------------------------------  ------------  -------  -----------  -----------  ------  -----------------
+Total                                                    448043.1657  622453.0620  0.0000
+
+1

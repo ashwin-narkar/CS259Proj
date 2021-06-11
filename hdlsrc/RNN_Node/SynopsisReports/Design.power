@@ -1,0 +1,386 @@
+Loading db file '/w/apps2/public.2/tech/synopsys/32-28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ff1p16vn40c.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : RNN
+Version: G-2012.06-SP1
+Date   : Thu Jun 10 20:25:41 2021
+****************************************
+
+
+Library(s) Used:
+
+    saed32rvt_ff1p16vn40c (File: /w/apps2/public.2/tech/synopsys/32-28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ff1p16vn40c.db)
+
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+RNN                    2000000           saed32rvt_ff1p16vn40c
+RNN_DW01_inc_0         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_1         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_2         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_leftsh_0        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_0         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_rightsh_0       8000              saed32rvt_ff1p16vn40c
+RNN_DW01_sub_1         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_2         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_cmp_1           ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_3         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_4         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_5         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_leftsh_1        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_1         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_rightsh_1       8000              saed32rvt_ff1p16vn40c
+RNN_DW01_sub_4         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_5         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_cmp_3           ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_6         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_7         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_2         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_3         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_4         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_5         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_6         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_7         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_8         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_9         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_10        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_11        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_12        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_13        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_14        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_15        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_16        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_17        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_18        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_19        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_20        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_21        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_22        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_23        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_24        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_25        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_26        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_27        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_28        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_29        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_30        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_31        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_32        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_33        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_34        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_35        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_36        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_37        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_38        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_39        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_40        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_41        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_43        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_rightsh_2       8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_44        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_45        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_46        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_9         8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_47        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_10        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_48        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_11        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_49        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_12        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_50        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_13        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_51        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_14        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_52        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_15        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_53        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_16        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_add_54        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_17        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_55        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_18        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_19        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_60        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_61        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_62        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_63        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_64        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_65        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_66        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_67        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_68        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_69        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_70        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_71        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_72        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_23        8000              saed32rvt_ff1p16vn40c
+RNN_DW_rightsh_3       8000              saed32rvt_ff1p16vn40c
+RNN_DW_leftsh_3        8000              saed32rvt_ff1p16vn40c
+RNN_DW01_inc_9         ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_10        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_25        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_78        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_11        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_sub_26        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_add_83        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_inc_12        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW01_cmp6_0        ForQA             saed32rvt_ff1p16vn40c
+RNN_DW_mult_uns_2      8000              saed32rvt_ff1p16vn40c
+RNN_DW_mult_uns_1      8000              saed32rvt_ff1p16vn40c
+RNN_DW_mult_tc_0       8000              saed32rvt_ff1p16vn40c
+RNN_DW_mult_tc_1       8000              saed32rvt_ff1p16vn40c
+RNN_DW_mult_uns_0      8000              saed32rvt_ff1p16vn40c
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+RNN                                    6.12e+03 3.55e+05 2.62e+12 2.98e+06 100.0
+  PU1/u_nfp_tanh_comp/mult_1734 (RNN_DW_mult_uns_0)
+                                         13.549   71.623 1.31e+10 1.32e+04   0.4
+  PU1/u_nfp_tanh_comp/mult_3523 (RNN_DW_mult_tc_1)
+                                          1.216    4.376 3.75e+09 3.75e+03   0.1
+  PU1/u_nfp_tanh_comp/mult_3498 (RNN_DW_mult_tc_0)
+                                         32.934   94.863 4.40e+09 4.53e+03   0.2
+  PU1/u_nfp_mul_comp_1/mult_598 (RNN_DW_mult_uns_1)
+                                         13.390   60.261 8.72e+09 8.80e+03   0.3
+  PU1/u_nfp_mul_comp/mult_598 (RNN_DW_mult_uns_2)
+                                         13.547   72.064 8.82e+09 8.91e+03   0.3
+  r1311 (RNN_DW01_cmp6_0)                 1.799    4.966 1.14e+08  120.344   0.0
+  r1312 (RNN_DW01_inc_12)                 0.216    0.636 7.34e+07   74.214   0.0
+  PU1/u_nfp_mul_comp/add_751 (RNN_DW01_add_83)
+                                       8.84e-03 3.10e-02 3.68e+07   36.856   0.0
+  PU1/u_nfp_mul_comp/sub_823 (RNN_DW01_sub_26)
+                                          0.963    2.623 9.11e+07   94.678   0.0
+  PU1/u_nfp_mul_comp/add_1077 (RNN_DW01_inc_11)
+                                       6.81e-03 2.78e-03 2.07e+08  207.066   0.0
+  PU1/u_nfp_mul_comp_1/add_751 (RNN_DW01_add_78)
+                                       6.06e-03 9.27e-03 3.68e+07   36.812   0.0
+  PU1/u_nfp_mul_comp_1/sub_823 (RNN_DW01_sub_25)
+                                          0.966    2.640 9.11e+07   94.716   0.0
+  PU1/u_nfp_mul_comp_1/add_1077 (RNN_DW01_inc_10)
+                                       5.81e-03 6.40e-03 2.07e+08  207.065   0.0
+  PU1/u_nfp_tanh_comp/add_1803 (RNN_DW01_inc_9)
+                                       1.11e-03 3.09e-03 6.63e+07   66.317   0.0
+  PU1/u_nfp_tanh_comp/sla_1930 (RNN_DW_leftsh_3)
+                                          0.150    1.507 7.90e+08  791.612   0.0
+  PU1/u_nfp_tanh_comp/sra_1962 (RNN_DW_rightsh_3)
+                                          6.093   15.326 6.71e+08  692.774   0.0
+  PU1/u_nfp_tanh_comp/sub_1997 (RNN_DW01_sub_23)
+                                          0.000    0.000 3.40e+08  340.471   0.0
+  PU1/u_nfp_tanh_comp/add_2044_aco (RNN_DW01_add_72)
+                                          0.000    0.000 2.12e+08  211.864   0.0
+  PU1/u_nfp_tanh_comp/add_2096_aco (RNN_DW01_add_71)
+                                       1.45e-03      N/A 1.71e+08  170.934   0.0
+  PU1/u_nfp_tanh_comp/add_2148_aco (RNN_DW01_add_70)
+                                       1.17e-02 3.98e-02 1.56e+08  156.453   0.0
+  PU1/u_nfp_tanh_comp/add_2200_aco (RNN_DW01_add_69)
+                                       1.26e-02 3.36e-02 1.75e+08  175.093   0.0
+  PU1/u_nfp_tanh_comp/add_2252_aco (RNN_DW01_add_68)
+                                       9.38e-03 1.75e-02 2.04e+08  203.902   0.0
+  PU1/u_nfp_tanh_comp/add_2304_aco (RNN_DW01_add_67)
+                                       1.38e-02 1.80e-02 1.71e+08  171.116   0.0
+  PU1/u_nfp_tanh_comp/add_2356_aco (RNN_DW01_add_66)
+                                       1.92e-02 5.90e-02 1.45e+08  144.885   0.0
+  PU1/u_nfp_tanh_comp/add_2408_aco (RNN_DW01_add_65)
+                                       2.15e-02 5.37e-02 1.61e+08  160.895   0.0
+  PU1/u_nfp_tanh_comp/add_2460_aco (RNN_DW01_add_64)
+                                       2.37e-02 7.19e-02 2.04e+08  204.270   0.0
+  PU1/u_nfp_tanh_comp/add_2512_aco (RNN_DW01_add_63)
+                                       3.21e-02    0.121 1.72e+08  172.216   0.0
+  PU1/u_nfp_tanh_comp/add_2564_aco (RNN_DW01_add_62)
+                                       2.71e-02 6.68e-02 1.64e+08  164.422   0.0
+  PU1/u_nfp_tanh_comp/add_2616_aco (RNN_DW01_add_61)
+                                       3.77e-02    0.112 1.65e+08  165.319   0.0
+  PU1/u_nfp_tanh_comp/add_2668 (RNN_DW01_add_60)
+                                       3.39e-02    0.110 2.26e+08  225.965   0.0
+  PU1/u_nfp_tanh_comp/sub_2890 (RNN_DW01_sub_19)
+                                          0.395    0.275 1.85e+08  185.430   0.0
+  PU1/u_nfp_tanh_comp/sub_2938 (RNN_DW01_sub_18)
+                                          0.439    0.477 2.52e+08  252.905   0.0
+  PU1/u_nfp_tanh_comp/add_2942 (RNN_DW01_add_55)
+                                       2.59e-02 8.87e-02 9.84e+07   98.563   0.0
+  PU1/u_nfp_tanh_comp/sub_2986 (RNN_DW01_sub_17)
+                                          0.480    0.633 3.31e+08  331.743   0.0
+  PU1/u_nfp_tanh_comp/add_2990 (RNN_DW01_add_54)
+                                       2.33e-02 7.93e-02 1.27e+08  126.640   0.0
+  PU1/u_nfp_tanh_comp/sub_3034 (RNN_DW01_sub_16)
+                                          0.395    0.662 3.90e+08  390.723   0.0
+  PU1/u_nfp_tanh_comp/add_3038 (RNN_DW01_add_53)
+                                       2.00e-02 6.54e-02 1.59e+08  158.876   0.0
+  PU1/u_nfp_tanh_comp/sub_3070 (RNN_DW01_sub_15)
+                                          0.367    0.960 3.74e+08  375.747   0.0
+  PU1/u_nfp_tanh_comp/add_3074 (RNN_DW01_add_52)
+                                       1.90e-02 5.72e-02 1.83e+08  182.870   0.0
+  PU1/u_nfp_tanh_comp/sub_3106 (RNN_DW01_sub_14)
+                                          0.369    0.967 3.69e+08  370.001   0.0
+  PU1/u_nfp_tanh_comp/add_3110 (RNN_DW01_add_51)
+                                       1.82e-02 6.21e-02 1.86e+08  186.130   0.0
+  PU1/u_nfp_tanh_comp/sub_3142 (RNN_DW01_sub_13)
+                                          0.345    0.962 3.65e+08  365.885   0.0
+  PU1/u_nfp_tanh_comp/add_3146 (RNN_DW01_add_50)
+                                       1.69e-02 5.09e-02 1.89e+08  189.405   0.0
+  PU1/u_nfp_tanh_comp/sub_3178 (RNN_DW01_sub_12)
+                                          0.357    1.031 3.59e+08  360.802   0.0
+  PU1/u_nfp_tanh_comp/add_3182 (RNN_DW01_add_49)
+                                       1.51e-02 4.97e-02 1.93e+08  192.684   0.0
+  PU1/u_nfp_tanh_comp/sub_3214 (RNN_DW01_sub_11)
+                                          0.344    1.014 3.54e+08  355.831   0.0
+  PU1/u_nfp_tanh_comp/add_3218 (RNN_DW01_add_48)
+                                       1.43e-02 4.66e-02 1.96e+08  195.983   0.0
+  PU1/u_nfp_tanh_comp/sub_3250 (RNN_DW01_sub_10)
+                                          0.334    1.004 3.49e+08  350.819   0.0
+  PU1/u_nfp_tanh_comp/add_3254 (RNN_DW01_add_47)
+                                       1.31e-02 4.68e-02 1.99e+08  199.307   0.0
+  PU1/u_nfp_tanh_comp/sub_3393 (RNN_DW01_sub_9)
+                                       4.05e-02    0.226 3.65e+08  365.061   0.0
+  PU1/u_nfp_tanh_comp/add_3427_aco (RNN_DW01_add_46)
+                                       2.93e-02 8.48e-02 1.03e+08  102.996   0.0
+  PU1/u_nfp_tanh_comp/add_3593 (RNN_DW01_add_45)
+                                       6.48e-02      N/A 2.11e+08  211.017   0.0
+  PU1/u_nfp_tanh_comp/add_3707 (RNN_DW01_add_44)
+                                          0.132      N/A 6.26e+07   62.220   0.0
+  PU1/u_nfp_tanh_comp/sra_3804 (RNN_DW_rightsh_2)
+                                          1.196    6.331 1.07e+09 1.08e+03   0.0
+  PU1/u_nfp_tanh_comp/add_3822 (RNN_DW01_add_43)
+                                       6.41e-02      N/A 1.24e+08  124.358   0.0
+  PU1/u_nfp_tanh_comp/add_4050 (RNN_DW01_add_41)
+                                          0.420    0.944 1.99e+08  200.852   0.0
+  PU1/u_nfp_tanh_comp/add_4062 (RNN_DW01_add_40)
+                                          0.236      N/A 1.75e+08  175.104   0.0
+  PU1/u_nfp_tanh_comp/add_4103 (RNN_DW01_add_39)
+                                          0.309    0.367 1.79e+08  180.134   0.0
+  PU1/u_nfp_tanh_comp/add_4115 (RNN_DW01_add_38)
+                                          0.249    0.167 1.74e+08  174.802   0.0
+  PU1/u_nfp_tanh_comp/add_4135 (RNN_DW01_add_37)
+                                          0.273    0.521 1.77e+08  177.549   0.0
+  PU1/u_nfp_tanh_comp/add_4153 (RNN_DW01_add_36)
+                                          0.266 2.96e-03 1.71e+08  170.832   0.0
+  PU1/u_nfp_tanh_comp/add_4242 (RNN_DW01_add_35)
+                                          0.331    0.335 1.77e+08  177.896   0.0
+  PU1/u_nfp_tanh_comp/add_4254 (RNN_DW01_add_34)
+                                          0.237    0.223 1.72e+08  172.595   0.0
+  PU1/u_nfp_tanh_comp/add_4284 (RNN_DW01_add_33)
+                                          0.201    0.468 1.68e+08  168.977   0.0
+  PU1/u_nfp_tanh_comp/add_4373 (RNN_DW01_add_32)
+                                          0.217      N/A 1.74e+08  174.023   0.0
+  PU1/u_nfp_tanh_comp/add_4385 (RNN_DW01_add_31)
+                                          0.202      N/A 1.69e+08  169.176   0.0
+  PU1/u_nfp_tanh_comp/add_4415 (RNN_DW01_add_30)
+                                          0.174      N/A 1.66e+08  165.868   0.0
+  PU1/u_nfp_tanh_comp/add_4504 (RNN_DW01_add_29)
+                                          0.232    0.327 1.72e+08  172.814   0.0
+  PU1/u_nfp_tanh_comp/add_4516 (RNN_DW01_add_28)
+                                          0.190    0.211 1.67e+08  167.764   0.0
+  PU1/u_nfp_tanh_comp/add_4546 (RNN_DW01_add_27)
+                                          0.204 2.81e-02 1.64e+08  164.483   0.0
+  PU1/u_nfp_tanh_comp/add_4635 (RNN_DW01_add_26)
+                                          0.179    0.108 1.69e+08  169.542   0.0
+  PU1/u_nfp_tanh_comp/add_4647 (RNN_DW01_add_25)
+                                          0.143      N/A 1.65e+08  164.656   0.0
+  PU1/u_nfp_tanh_comp/add_4677 (RNN_DW01_add_24)
+                                          0.144    0.231 1.62e+08  162.138   0.0
+  PU1/u_nfp_tanh_comp/add_4766 (RNN_DW01_add_23)
+                                          0.161    0.103 1.68e+08  167.867   0.0
+  PU1/u_nfp_tanh_comp/add_4778 (RNN_DW01_add_22)
+                                          0.121      N/A 1.63e+08  162.788   0.0
+  PU1/u_nfp_tanh_comp/add_4808 (RNN_DW01_add_21)
+                                          0.149      N/A 1.60e+08  160.353   0.0
+  PU1/u_nfp_tanh_comp/add_4897 (RNN_DW01_add_20)
+                                          0.165    0.234 1.66e+08  166.691   0.0
+  PU1/u_nfp_tanh_comp/add_4909 (RNN_DW01_add_19)
+                                          0.132    0.142 1.61e+08  161.717   0.0
+  PU1/u_nfp_tanh_comp/add_4939 (RNN_DW01_add_18)
+                                          0.142 9.76e-03 1.59e+08  159.344   0.0
+  PU1/u_nfp_tanh_comp/add_5028 (RNN_DW01_add_17)
+                                          0.101      N/A 1.64e+08  163.974   0.0
+  PU1/u_nfp_tanh_comp/add_5040 (RNN_DW01_add_16)
+                                       1.00e-01    0.125 1.59e+08  159.533   0.0
+  PU1/u_nfp_tanh_comp/add_5070 (RNN_DW01_add_15)
+                                          0.101    0.111 1.57e+08  157.520   0.0
+  PU1/u_nfp_tanh_comp/add_5159 (RNN_DW01_add_14)
+                                          0.135 1.48e-02 1.63e+08  163.162   0.0
+  PU1/u_nfp_tanh_comp/add_5171 (RNN_DW01_add_13)
+                                          0.125 8.42e-02 1.58e+08  158.612   0.0
+  PU1/u_nfp_tanh_comp/add_5201 (RNN_DW01_add_12)
+                                          0.112 4.09e-02 1.57e+08  156.676   0.0
+  PU1/u_nfp_tanh_comp/add_5290 (RNN_DW01_add_11)
+                                          0.124 9.33e-02 1.62e+08  161.945   0.0
+  PU1/u_nfp_tanh_comp/add_5302 (RNN_DW01_add_10)
+                                          0.101 1.72e-02 1.57e+08  157.275   0.0
+  PU1/u_nfp_tanh_comp/add_5332 (RNN_DW01_add_9)
+                                          0.101    0.110 1.56e+08  155.746   0.0
+  PU1/u_nfp_tanh_comp/add_5421 (RNN_DW01_add_8)
+                                          0.113 6.24e-02 1.60e+08  160.600   0.0
+  PU1/u_nfp_tanh_comp/add_5433 (RNN_DW01_add_7)
+                                       7.52e-02 7.72e-03 1.56e+08  155.931   0.0
+  PU1/u_nfp_tanh_comp/add_5463 (RNN_DW01_add_6)
+                                       7.44e-02    0.128 1.54e+08  154.575   0.0
+  PU1/u_nfp_tanh_comp/add_5552 (RNN_DW01_add_5)
+                                       7.13e-02      N/A 1.53e+08  152.664   0.0
+  PU1/u_nfp_tanh_comp/add_5564 (RNN_DW01_add_4)
+                                       5.61e-02      N/A 1.48e+08  148.019   0.0
+  PU1/u_nfp_tanh_comp/add_5648 (RNN_DW01_add_3)
+                                       3.74e-02      N/A 1.47e+08  146.562   0.0
+  PU1/u_nfp_tanh_comp/add_5897 (RNN_DW01_add_2)
+                                          1.008    6.198 1.87e+08  194.641   0.0
+  PU1/u_nfp_tanh_comp/add_6036 (RNN_DW01_inc_7)
+                                       2.64e-02    0.113 6.38e+07   63.896   0.0
+  PU1/u_nfp_tanh_comp/add_6145 (RNN_DW01_inc_6)
+                                       4.42e-02      N/A 6.39e+07   63.888   0.0
+  PU1/u_nfp_add_comp/gte_537 (RNN_DW_cmp_3)
+                                       2.04e-02 6.52e-02 2.69e+08  268.794   0.0
+  PU1/u_nfp_add_comp/sub_951 (RNN_DW01_sub_5)
+                                       1.17e-02 7.60e-02 2.42e+08  241.893   0.0
+  PU1/u_nfp_add_comp/sub_1000 (RNN_DW01_sub_4)
+                                       2.91e-02    0.543 8.94e+07   89.965   0.0
+  PU1/u_nfp_add_comp/sra_1040 (RNN_DW_rightsh_1)
+                                       5.55e-02    0.359 5.61e+08  561.375   0.0
+  PU1/u_nfp_add_comp/add_1060 (RNN_DW01_add_1)
+                                       1.11e-02 3.49e-02 1.10e+08  110.119   0.0
+  PU1/u_nfp_add_comp/sla_1702 (RNN_DW_leftsh_1)
+                                          3.536    9.797 4.92e+08  505.763   0.0
+  PU1/u_nfp_add_comp/add_2309 (RNN_DW01_inc_5)
+                                       1.83e-03      N/A 2.07e+08  207.041   0.0
+  PU1/u_nfp_add_comp/add_2398 (RNN_DW01_inc_4)
+                                       2.19e-02 2.66e-02 6.34e+07   63.446   0.0
+  PU1/u_nfp_add_comp/add_2444 (RNN_DW01_inc_3)
+                                       1.43e-03 4.76e-03 6.38e+07   63.759   0.0
+  PU1/u_nfp_add_comp_1/gte_537 (RNN_DW_cmp_1)
+                                       5.68e-03 1.74e-02 2.69e+08  268.819   0.0
+  PU1/u_nfp_add_comp_1/sub_951 (RNN_DW01_sub_2)
+                                          0.000    0.000 2.42e+08  241.757   0.0
+  PU1/u_nfp_add_comp_1/sub_1000 (RNN_DW01_sub_1)
+                                       2.45e-02    0.523 8.94e+07   89.949   0.0
+  PU1/u_nfp_add_comp_1/sra_1040 (RNN_DW_rightsh_0)
+                                          0.000    0.000 5.61e+08  560.956   0.0
+  PU1/u_nfp_add_comp_1/add_1060 (RNN_DW01_add_0)
+                                          0.000    0.000 1.10e+08  109.891   0.0
+  PU1/u_nfp_add_comp_1/sla_1702 (RNN_DW_leftsh_0)
+                                          3.513    9.623 4.92e+08  505.567   0.0
+  PU1/u_nfp_add_comp_1/add_2309 (RNN_DW01_inc_2)
+                                          0.000    0.000 2.07e+08  207.044   0.0
+  PU1/u_nfp_add_comp_1/add_2398 (RNN_DW01_inc_1)
+                                       2.04e-02 2.31e-02 6.34e+07   63.439   0.0
+  PU1/u_nfp_add_comp_1/add_2444 (RNN_DW01_inc_0)
+                                       1.65e-04 6.47e-04 6.38e+07   63.753   0.0
+1

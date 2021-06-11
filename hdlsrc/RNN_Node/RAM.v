@@ -19,25 +19,25 @@ module RAM( input clk, input reset, //control signals
     always @ (posedge clk) begin
         if(reset) begin
             for(i = 0; i < RAMSIZE; i = i + 1) begin
-                Wreg[i] = 32'b0;
-                Hreg[i] = 32'b0;
-                Ureg[i] = 32'b0;
-                Xreg[i] = 32'b0;
-                Vreg[i] = 32'b0;
+                Wreg[i] <= 32'b0;
+                Hreg[i] <= 32'b0;
+                Ureg[i] <= 32'b0;
+                Xreg[i] <= 32'b0;
+                Vreg[i] <= 32'b0;
             end
         end
         else if (writeenable)begin
-            Wreg[writeport] = writeW;
-            Hreg[writeport] = writeH;
-            Ureg[writeport] = writeU;
-            Xreg[writeport] = writeX;
-            Vreg[writeport] = writeV;
+            Wreg[writeport] <= writeW;
+            Hreg[writeport] <= writeH;
+            Ureg[writeport] <= writeU;
+            Xreg[writeport] <= writeX;
+            Vreg[writeport] <= writeV;
         end
-        readW = Wreg[readport];
-        readH = Hreg[readport];
-        readU = Ureg[readport];
-        readX = Xreg[readport];
-        readV = Vreg[readport];
+        readW <= Wreg[readport];
+        readH <= Hreg[readport];
+        readU <= Ureg[readport];
+        readX <= Xreg[readport];
+        readV <= Vreg[readport];
     end
 
 endmodule
