@@ -70,7 +70,6 @@ gpu_matrix_mult(float *a,float *b, float *c, int m, int n, int k)
     for(int j = 0; j < n; j++){
         c[tid] += a[n*row + j] * b[col + k*j];
     }
-
 } 
 
 __global__ void 

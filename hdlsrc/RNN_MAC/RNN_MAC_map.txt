@@ -1,0 +1,3 @@
+RNN_MAC/nfp_mul_single --> nfp_mul_single
+RNN_MAC/nfp_add_single --> nfp_add_single
+RNN_MAC --> RNN_MAC

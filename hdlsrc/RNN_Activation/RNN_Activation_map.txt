@@ -1,0 +1,3 @@
+RNN_Activation/nfp_add_single --> nfp_add_single
+RNN_Activation/nfp_tanh_single --> nfp_tanh_single
+RNN_Activation --> RNN_Activation
