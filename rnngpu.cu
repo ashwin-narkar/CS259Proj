@@ -8,11 +8,31 @@
 #define __BATCH 1
 
 #if __CLASS == 1
-    #define __INPUTLAYER 10
-    #define __OUTLAYER 7
+    #define __XT_ROW 10
+    #define __XT_COL 1
+    #define __HT_ROW 10
+    #define __HT_COL 7
+    #define __YT_ROW 1
+    #define __YT_COL 7
+    #define __U_ROW 1
+    #define __U_COL 7
+    #define __V_ROW 1
+    #define __V_COL 10
+    #define __W_ROW 7
+    #define __W_COL 7
 #else
-    #define __INPUTLAYER 4096
-    #define __OUTLAYER 1024
+    #define __XT_ROW 10
+    #define __XT_COL 1
+    #define __HT_ROW 10
+    #define __HT_COL 7
+    #define __YT_ROW 1
+    #define __YT_COL 7
+    #define __U_ROW 1
+    #define __U_COL 7
+    #define __V_ROW 1
+    #define __V_COL 10
+    #define __W_ROW 7
+    #define __W_COL 7
 #endif
 
 //From open source code: git user lzhengchun
@@ -61,34 +81,23 @@ int main(void)
     // Error code to check return values for CUDA calls
     cudaError_t err = cudaSuccess;
 
-    size_t xt_size = __INPUTLAYER * sizeof(float) * __BATCH;
-    size_t ht_size = __INPUTLAYER * __OUTLAYER * sizeof(float);
-    size_t yt_size = __OUTLAYER * sizeof(float) * __BATCH;
-    size_t W_size = __OUTLAYER * __OUTLAYER * sizeof(float);
-    size_t V_size = __INPUTLAYER * __BATCH * sizeof(float);
-    size_t U_size = __OUTLAYER * __BATCH * sizeof(float);
+    size_t xt_size = __XT_COL*__XT_ROW * sizeof(float) * __BATCH;
+    size_t ht_size = __HT_COL*__HT_ROW * sizeof(float) * __BATCH;
+    size_t yt_size = __YT_COL*__YT_ROW * sizeof(float) * __BATCH;
+    size_t W_size = __W_COL*__W_ROW * sizeof(float) * __BATCH;
+    size_t V_size = __V_COL*__V_ROW * sizeof(float) * __BATCH;
+    size_t U_size = __U_COL*__U_ROW * sizeof(float) * __BATCH;
 
-    // Allocate the host input vector xt
     float *xt_cpu = (float *)malloc(xt_size);
-
-    // Allocate the host input vector ht
     float *ht_cpu = (float *)malloc(ht_size);
-
-    // Allocate the host output vector yt
     float *yt_cpu = (float *)malloc(yt_size);
-
     float *W_cpu = (float *)malloc(W_size);
-
     float *U_cpu = (float *)malloc(U_size);
-    
     float *V_cpu = (float *)malloc(V_size);
 
     // these are intermediate ones that should be the same size as ht because they are making the new ht
     float *xt_times_U_cpu = (float*)malloc(ht_size);
     float *prevht_times_W_cpu = (float*)malloc(ht_size);
-
-
-    float prevht_times_W[70];
 
     // Verify that allocations succeeded
     if (xt_cpu == NULL || ht_cpu == NULL || yt_cpu == NULL || W_cpu == NULL || V_cpu == NULL | U_cpu == NULL || xt_times_U_cpu == NULL || prevht_times_W_cpu == NULL)
@@ -102,7 +111,6 @@ int main(void)
     {
         xt_cpu[i] = rand()/(float)RAND_MAX;
     }
-
     for (int i = 0; i < ht_size; ++i)
     {
         ht_cpu[i] = rand()/(float)RAND_MAX;
@@ -111,7 +119,6 @@ int main(void)
     {
         W_cpu[i] = rand()/(float)RAND_MAX;
     }
-
     for (int i = 0; i < V_size; ++i)
     {
         V_cpu[i] = rand()/(float)RAND_MAX;
@@ -190,8 +197,7 @@ int main(void)
     {
         fprintf(stderr, "Failed to allocate device vector V (error code %s)!\n", cudaGetErrorString(err));
         exit(EXIT_FAILURE);
-    }
-    
+    }  
     
     // Allocate the device input vector prevht_times_W
     float *prevht_times_W_cuda = NULL;
@@ -300,7 +306,7 @@ int main(void)
     struct timeval t1, t2;
     gettimeofday(&t1,0);
     
-    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(xt_times_U_cuda, xt_cuda, U_cuda, __INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
+    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(xt_cuda, U_cuda, xt_times_U_cuda,__INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
     cudaThreadSynchronize();
     err = cudaGetLastError();
     if (err != cudaSuccess)
@@ -309,7 +315,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(prevht_times_W_cuda, ht_cuda, W_cuda, __INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
+    gpu_matrix_mult<<<blocksPerGrid, threadsPerBlock>>>(ht_cuda, W_cuda, prevht_times_W_cuda, __INPUTLAYER, __OUTLAYER, __INPUTLAYER);   
     cudaThreadSynchronize();
     err = cudaGetLastError();
     if (err != cudaSuccess)
@@ -318,7 +324,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    gpu_matrix_add<<<blocksPerGrid, threadsPerBlock>>>(ht_cuda, xt_times_U_cuda, prevht_times_W_cuda);   
+    gpu_matrix_add<<<blocksPerGrid, threadsPerBlock>>>(xt_times_U_cuda, prevht_times_W_cuda, ht_cuda);   
     cudaThreadSynchronize();
     err = cudaGetLastError();
     if (err != cudaSuccess)

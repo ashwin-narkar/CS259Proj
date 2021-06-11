@@ -277,7 +277,7 @@ endif
 # Target rules
 all: build
 
-build: rnngpu
+build: rnncpu rnngpu
 
 check.deps:
 ifeq ($(SAMPLE_ENABLED),0)
